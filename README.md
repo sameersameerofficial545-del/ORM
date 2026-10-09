@@ -1,10 +1,9 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date:0910.2026 
 
 ## AIM
 To develop a Django Application to store and retrieve data from a Vehicle Service Database platform using Object Relational Mapping(ORM).
 
-## ENTITY RELATIONSHIP DIAGRAM
 
 
 
@@ -35,11 +34,33 @@ Apply the migration files of the created app to the database
 Execute Django admin using localhost and create details for 10 entries
 
 ## PROGRAM
+```
+models.py
+from django.db import models
+from django.contrib import admin
+class Blinkit(models.Model):
+    User_Id = models.IntegerField(primary_key=True)
+    User_Name = models.CharField(max_length=100)
+    Mobile_Number = models.IntegerField(max_length=10)
+    Email = models.EmailField()
+    Address = models.TextField()
+    Order_Id = models.IntegerField()
+    Order_Date = models.DateField()
+    Product_Name = models.CharField(max_length=100)
+    Delivery_Date = models.DateField()
+class BlinkitAdmin(admin.ModelAdmin):
+    list_display=["User_Id","User_Name","Mobile_Number","Email","Address","Order_Id","Order_Date","Product_Name","Delivery_Date"]
 
+
+admin.py
+from django.contrib import admin
+from .models import Blinkit,BlinkitAdmin
+admin.site.register(Blinkit,BlinkitAdmin)
+```
 
 
 ## OUTPUT
-
+![alt text](image-1.png)
 
 
 ## RESULT
